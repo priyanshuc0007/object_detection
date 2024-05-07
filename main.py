@@ -3,11 +3,9 @@ from transformers import DetrImageProcessor, DetrForObjectDetection
 import torch
 from PIL import Image
 
-# Initialize the object detection model and image processor
 processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
 model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
 
-# Open the camera
 cap = cv2.VideoCapture(0)  # Use 0 for the default camera
 
 while True:
@@ -44,6 +42,6 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Release the camera and close OpenCV windows
+
 cap.release()
 cv2.destroyAllWindows()
